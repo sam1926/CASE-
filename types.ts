@@ -1,4 +1,4 @@
-export type NavigationTab = 
+export type NavigationTab =
   | 'executive-summary'
   | 'process-modelling'
   | 'requirements'
@@ -18,6 +18,17 @@ export interface BusinessRule {
   id: string;
   rule: string;
   description: string;
+}
+
+// Global type declarations
+declare global {
+  interface Window {
+    mermaid: {
+      initialize: (config: any) => void;
+      render: (id: string, text: string) => Promise<{ svg: string }>;
+    };
+  }
+}
 }
 
 // Extend Window interface for Mermaid CDN
